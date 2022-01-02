@@ -1,4 +1,4 @@
-export interface Multimedia {
+export interface Imultimedia {
   url: string;
   format: string;
   height: number;
