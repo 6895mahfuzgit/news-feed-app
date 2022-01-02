@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { TopMenuBarComponent } from './top-menu-bar/top-menu-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopMenuBarComponent
+    TopMenuBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
