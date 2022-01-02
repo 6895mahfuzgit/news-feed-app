@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
+
+import { environment } from '../environments/environment';
+import { ApiService } from './api.service';
+import { Iitem } from '../_models/item';
+import { IResponse } from '../_models/response';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +14,13 @@ export class HomeService {
   private key = environment.apiKey;
 
   constructor(private api: ApiService) {}
+
   getAll() {
-    return this.api
-      .get<any>(`${this.apiPATH}${this.key}`)
-      .pipe(map((res) => res.results));
+    return this.api.get<Iitem[]>(`${this.apiPATH}${this.key}`).pipe(
+      map((res) => {
+        let x = res as unknown as IResponse;
+        return x.results;
+      })
+    );
   }
 }
