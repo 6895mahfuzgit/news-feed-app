@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:"https://api.nytimes.com/svc/topstories/v2/"
+  apiUrl:"https://api.nytimes.com/svc/topstories/v2/",
+  apiKey:'hSVGGYZdb9IWBq3PLTiYF86pOwOXkAZD'
 };
 
 /*
