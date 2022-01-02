@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TopMenuBarComponent } from './top-menu-bar/top-menu-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    UiControlsModule
+    UiControlsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
