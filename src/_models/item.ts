@@ -1,7 +1,7 @@
 import { ItemType } from './../_enums/Item-type.enum';
-import { Multimedia } from "./multimedia";
 
-export interface Item {
+
+export interface Iitem {
   section:             string;
   subsection:          string;
   title:               string;
