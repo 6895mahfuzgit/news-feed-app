@@ -1,4 +1,4 @@
-import { Iitem } from 'src/_models/item';
+import { Iitem } from '../_models/item';
 export interface IResponse {
   status: string;
   copyright: string;
