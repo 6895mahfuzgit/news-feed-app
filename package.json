@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "pwa": "ng build --prod && cd dist && cd news-feed-app && http-server -p 8080"
   },
   "private": true,
   "dependencies": {
