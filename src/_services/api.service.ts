@@ -36,4 +36,8 @@ export class ApiService {
   public patch<T>(url: string, body: string): Observable<T> {
     return this.http.patch<T>(`${this.apiUrl}${url}`, body);
   }
+
+  public getOnlineStatus(){
+    return navigator.onLine;
+  }
 }
