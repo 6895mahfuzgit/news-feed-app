@@ -8,6 +8,7 @@ import { Iitem } from '../_models/item';
 import { IResponse } from '../_models/response';
 import { IdbService } from 'src/_dbs/idb.service';
 import { ItemEnum } from './../_enums/item.enum';
+import { ArtsdbService } from 'src/_dbs/arts.db.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class ArtsService {
   private apiPATH = 'arts.json?api-key=';
   private key = environment.apiKey;
 
-  constructor(private api: ApiService, private idbService: IdbService) {
+  constructor(private api: ApiService, private idbService: ArtsdbService) {
     this.idbService.connectToIDB(ItemEnum.Arts);
   }
 
@@ -26,7 +27,11 @@ export class ArtsService {
         map((res) => {
           let x = res as unknown as IResponse;
           this.idbService.deleteAllItems(ItemEnum.Arts);
-          x.results.map((v) => this.idbService.addItems(ItemEnum.Arts, v));
+          if(x.results){
+            if(x.results.length>0){
+             x.results.map((v) => this.idbService.addItems(ItemEnum.Arts, v));
+            }
+         }
           return x.results;
         })
       );
