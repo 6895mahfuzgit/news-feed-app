@@ -8,6 +8,8 @@ import { IResponse } from '../_models/response';
 import { IdbService } from '../_dbs/idb.service';
 import { ItemEnum } from '../_enums/item.enum';
 import { defer, from, Observable, of } from 'rxjs';
+import { HomeDbService } from 'src/_dbs/home.db.service';
+import { ArtsdbService } from 'src/_dbs/arts.db.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,7 @@ export class HomeService {
   private apiPATH = 'home.json?api-key=';
   private key = environment.apiKey;
 
-  constructor(private api: ApiService, private idbService: IdbService) {
+  constructor(private api: ApiService, private idbService: HomeDbService) {
     this.idbService.connectToIDB(ItemEnum.Home);
   }
 
@@ -26,7 +28,11 @@ export class HomeService {
         map((res) => {
           let x = res as unknown as IResponse;
           this.idbService.deleteAllItems(ItemEnum.Home);
-          x.results.map((v) => this.idbService.addItems(ItemEnum.Home, v));
+          if(x.results){
+             if(x.results.length>0){
+              x.results.map((v) => this.idbService.addItems(ItemEnum.Home, v));
+             }
+          }
           return x.results;
         })
       );
