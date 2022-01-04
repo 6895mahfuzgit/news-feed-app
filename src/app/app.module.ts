@@ -10,13 +10,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ItemListComponent } from './item-list/item-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TopMenuBarComponent,
-    FooterComponent
+    FooterComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
