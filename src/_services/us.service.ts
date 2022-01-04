@@ -8,6 +8,7 @@ import { Iitem } from '../_models/item';
 import { IResponse } from '../_models/response';
 import { IdbService } from '../_dbs/idb.service';
 import { ItemEnum } from './../_enums/item.enum';
+import { UsDbService } from 'src/_dbs/us.db.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class UsService {
   private apiPATH = 'us.json?api-key=';
   private key = environment.apiKey;
 
-  constructor(private api: ApiService, private idbService: IdbService) {
+  constructor(private api: ApiService, private idbService: UsDbService) {
     this.idbService.connectToIDB(ItemEnum.Us);
   }
 
@@ -26,7 +27,11 @@ export class UsService {
         map((res) => {
           let x = res as unknown as IResponse;
           this.idbService.deleteAllItems(ItemEnum.Us);
-          x.results.map((v) => this.idbService.addItems(ItemEnum.Us, v));
+          if(x.results){
+            if(x.results.length>0){
+             x.results.map((v) => this.idbService.addItems(ItemEnum.Us, v));
+            }
+         }
           return x.results;
         })
       );
