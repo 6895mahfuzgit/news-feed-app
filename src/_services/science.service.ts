@@ -8,6 +8,7 @@ import { Iitem } from '../_models/item';
 import { IResponse } from '../_models/response';
 import { IdbService } from '../_dbs/idb.service';
 import { ItemEnum } from './../_enums/item.enum';
+import { ScienceDbService } from 'src/_dbs/science.db.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class ScienceService {
   private apiPATH = 'science.json?api-key=';
   private key = environment.apiKey;
 
-  constructor(private api: ApiService, private idbService: IdbService) {
+  constructor(private api: ApiService, private idbService: ScienceDbService) {
     this.idbService.connectToIDB(ItemEnum.Science);
   }
 
@@ -26,7 +27,11 @@ export class ScienceService {
         map((res) => {
           let x = res as unknown as IResponse;
           this.idbService.deleteAllItems(ItemEnum.Science);
-          x.results.map((v) => this.idbService.addItems(ItemEnum.Science, v));
+          if(x.results){
+            if(x.results.length>0){
+             x.results.map((v) => this.idbService.addItems(ItemEnum.Science, v));
+            }
+         }
           return x.results;
         })
       );
