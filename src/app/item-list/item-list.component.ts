@@ -48,30 +48,30 @@ export class ItemListComponent implements OnInit, OnDestroy {
   loadDataByItemType(itemType: string) {
 
     if (itemType == ItemEnum.Arts) {
-      this.artsService.getAll().subscribe(data => {
+      this.artsService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
       });
     } else if (itemType == ItemEnum.Home) {
-      this.homeService.getAll().subscribe(data => {
+      this.homeService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
       });
     } else if (itemType == ItemEnum.Science) {
-      this.scienceService.getAll().subscribe(data => {
+      this.scienceService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
       });
     } else if (itemType == ItemEnum.World) {
-      this.worldService.getAll().subscribe(data => {
+      this.worldService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
       });
     } else if (itemType == ItemEnum.Us) {
-      this.usService.getAll().subscribe(data => {
+      this.usService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
       });
     }
   }
 
   ngOnDestroy(): void {
-    //this.isActive$.next(true);
-    // this.isActive$.unsubscribe();
+    this.isActive$.next(true);
+    this.isActive$.unsubscribe();
   }
 }
