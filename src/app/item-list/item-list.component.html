@@ -1,15 +1,16 @@
-<div *ngFor="let item of (items$| async)">
+<div [ngClass]="{'body-color': (showLoader$| async)==true}">
+  <div *ngFor="let item of (items$| async)">
 
     <h1> {{item?.title}}</h1>
     <p> {{item?.abstract}}</p>
     <div *ngFor="let media of item.multimedia">
-       <img [src]="media?.url"/>
-       <p>{{media.caption}}</p>
+      <img [src]="media?.url" />
+      <p>{{media.caption}}</p>
     </div>
-    byline:{{item?.byline}}<br/>
-    created_date{{item?.created_date | date:'MMMM d, y'}}<br/>
+    byline:{{item?.byline}}<br />
+    created_date{{item?.created_date | date:'MMMM d, y'}}<br />
 
-    Updated {{item?.updated_date| date:'h:mm a' }}<br/>
+    Updated {{item?.updated_date| date:'h:mm a' }}<br />
 
     <!--  section:{{item?.section}}<br/>
     subsection:{{item?.subsection}}<br/>
@@ -36,4 +37,9 @@
     geo_facet{{item?.geo_facet| json}}<br/>
 
     short_url:{{item?.short_url| json}} -->
+  </div>
+  <div class="center" *ngIf="(showLoader$| async)">
+    <mat-progress-spinner *ngIf="(showLoader$| async)" mode="indeterminate" diameter='20' strokeWidth='50'>
+    </mat-progress-spinner>
+  </div>
 </div>

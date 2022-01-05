@@ -28,6 +28,9 @@ export class ItemListComponent implements OnInit, OnDestroy {
   private itemSubject = new BehaviorSubject<Iitem[]>([]);
   items$ = this.itemSubject.asObservable();
 
+  private loaderSubject = new BehaviorSubject<boolean>(false);
+  showLoader$ = this.loaderSubject.asObservable();
+
   constructor(
     private itemTypeService: ItemTypeService,
     private artsService: ArtsService,
@@ -46,30 +49,51 @@ export class ItemListComponent implements OnInit, OnDestroy {
   }
 
   loadDataByItemType(itemType: string) {
-
+    this.showLoader(true);
     if (itemType == ItemEnum.Arts) {
       this.artsService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
+        this.showLoader(false);
+      }, error => {
+        this.showLoader(false);
       });
     } else if (itemType == ItemEnum.Home) {
       this.homeService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
+        this.showLoader(false);
+      }, error => {
+        this.showLoader(false);
       });
     } else if (itemType == ItemEnum.Science) {
       this.scienceService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
+        this.showLoader(false);
+      }, error => {
+        this.showLoader(false);
       });
     } else if (itemType == ItemEnum.World) {
       this.worldService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
+        this.showLoader(false);
+      }, error => {
+        this.showLoader(false);
       });
     } else if (itemType == ItemEnum.Us) {
       this.usService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
+        this.showLoader(false);
+      }, error => {
+        this.showLoader(false);
       });
-    }else{
+    } else {
       this.itemSubject.next([] as Iitem[]);
+      this.showLoader(false);
     }
+  }
+
+
+  showLoader(display: boolean) {
+    this.loaderSubject.next(display);
   }
 
   ngOnDestroy(): void {
