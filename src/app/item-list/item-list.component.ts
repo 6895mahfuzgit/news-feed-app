@@ -67,6 +67,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
       this.usService.getAll().pipe(takeUntil(this.isActive$)).subscribe(data => {
         this.itemSubject.next(data as Iitem[]);
       });
+    }else{
+      this.itemSubject.next([] as Iitem[]);
     }
   }
 
