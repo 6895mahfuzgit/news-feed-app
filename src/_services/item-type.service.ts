@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ItemTypeService {
-  private itemTypeSubject = new BehaviorSubject<string>('');
+  private itemTypeSubject = new BehaviorSubject<string>('Home');
   itemType$ = this.itemTypeSubject.asObservable();
 
   constructor() {}
