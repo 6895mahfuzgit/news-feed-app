@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -10,11 +12,15 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
   imports: [
     CommonModule,
     MatSliderModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   exports:[
     MatSliderModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ]
 })
 export class UiControlsModule { }
