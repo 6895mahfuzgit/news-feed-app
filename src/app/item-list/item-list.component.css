@@ -7,7 +7,9 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
 .body-color{
-  color: aqua;
-  background:aqua;
+  color: #5e47c7d5;
+  background:#5e47c7d5;
+  background-color: #5e47c7d5;
+  z-index: -1;
 }
 
