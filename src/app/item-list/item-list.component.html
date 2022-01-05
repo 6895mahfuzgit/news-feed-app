@@ -1,4 +1,39 @@
-
 <div *ngFor="let item of (items$| async)">
-     {{item?.title}}
+
+    <h1> {{item?.title}}</h1>
+    <p> {{item?.abstract}}</p>
+    <div *ngFor="let media of item.multimedia">
+       <img [src]="media?.url"/>
+       <p>{{media.caption}}</p>
+    </div>
+    byline:{{item?.byline}}<br/>
+    created_date{{item?.created_date | date:'MMMM d, y'}}<br/>
+
+    Updated {{item?.updated_date| date:'h:mm a' }}<br/>
+
+    <!--  section:{{item?.section}}<br/>
+    subsection:{{item?.subsection}}<br/>
+    title:{{item?.title}}<br/>
+    IMage:{{(item?.multimedia| json)['url']}} <br/>
+    multimedia:{{(item?.multimedia| json)['caption']}} <br/>
+    byline:{{item?.byline}}<br/>
+
+   created_date{{item?.created_date}}<br/>
+    updated_date:{{item?.updated_date}}<br/>
+
+    url:{{item?.url}}<br/>
+    uri:{{item?.uri}}<br/>
+
+    item_type:{{item?.item_type}}<br/> -->
+
+
+    <!-- published_date:{{item?.published_date}}<br/>
+    material_type_facet:{{item?.material_type_facet}}<br/>
+    kicker:{{item?.kicker}}<br/>
+    des_facet:{{item?.des_facet | json}}<br/>
+    org_facet:{{item?.org_facet| json}}<br/>
+    per_facet:{{item?.per_facet| json}}<br/>
+    geo_facet{{item?.geo_facet| json}}<br/>
+
+    short_url:{{item?.short_url| json}} -->
 </div>
