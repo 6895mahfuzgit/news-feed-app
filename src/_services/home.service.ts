@@ -5,11 +5,10 @@ import { environment } from '../environments/environment';
 import { ApiService } from './api.service';
 import { Iitem } from '../_models/item';
 import { IResponse } from '../_models/response';
-import { IdbService } from '../_dbs/idb.service';
 import { ItemEnum } from '../_enums/item.enum';
 import { defer, from, Observable, of } from 'rxjs';
-import { HomeDbService } from 'src/_dbs/home.db.service';
-import { ArtsdbService } from 'src/_dbs/arts.db.service';
+import { HomeDbService } from '../_dbs/home.db.service';
+import { ArtsdbService } from '../_dbs/arts.db.service';
 
 @Injectable({
   providedIn: 'root',
