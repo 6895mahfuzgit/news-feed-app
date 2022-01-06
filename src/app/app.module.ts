@@ -1,3 +1,4 @@
+import { SafeURLPipe } from './../_pipes/safe.pipe.';
 import { UiControlsModule } from './../_modules/ui-controls/ui-controls.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ import { ItemListComponent } from './item-list/item-list.component';
     AppComponent,
     TopMenuBarComponent,
     FooterComponent,
-    ItemListComponent
+    ItemListComponent,
+    SafeURLPipe
   ],
   imports: [
     BrowserModule,
