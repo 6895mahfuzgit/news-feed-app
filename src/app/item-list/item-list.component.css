@@ -43,3 +43,20 @@ h1 {
   font: bold;
   font-family: Franklin Gothic Medium;
 }
+
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+
+  button{
+  margin: -6px 17px 0px 1px;
+  border-radius: 2px;
+  color: white;
+  background-color: #04AA6D;
+}
