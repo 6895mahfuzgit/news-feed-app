@@ -1,3 +1,4 @@
+import { SafeURLPipe } from './../../_pipes/safe.pipe.';
 import { UsService } from './../../_services/us.service';
 import {
   ChangeDetectionStrategy,
@@ -20,6 +21,7 @@ import { Iitem } from 'src/_models/item';
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.css'],
+  providers:[SafeURLPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemListComponent implements OnInit, OnDestroy {
@@ -31,13 +33,19 @@ export class ItemListComponent implements OnInit, OnDestroy {
   private loaderSubject = new BehaviorSubject<boolean>(false);
   showLoader$ = this.loaderSubject.asObservable();
 
+
+  private urlSubject = new BehaviorSubject<string>('');
+  url$ = this.urlSubject.asObservable();
+
+
   constructor(
     private itemTypeService: ItemTypeService,
     private artsService: ArtsService,
     private homeService: HomeService,
     private scienceService: ScienceService,
     private worldService: WorldService,
-    private usService: UsService
+    private usService: UsService,
+    private safeURLPipe:SafeURLPipe
   ) { }
 
   ngOnInit(): void {
@@ -94,6 +102,10 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
   showLoader(display: boolean) {
     this.loaderSubject.next(display);
+  }
+
+  changeURL(url:string){
+   this.urlSubject.next(url);
   }
 
   ngOnDestroy(): void {
