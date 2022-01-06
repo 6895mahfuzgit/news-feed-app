@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.15.
 
-## To run localy
+## To Run Localy
 Run `npm i` (if http-server is not exists localt then run  `npm install -g http-server` ) then
 Run `npm run pwa` 
 
