@@ -44,19 +44,23 @@ h1 {
   font-family: Franklin Gothic Medium;
 }
 
-
 .alignleft {
-	float: left;
+  float: left;
 }
 
 .alignright {
-	float: right;
+  float: right;
 }
 
-
-  button{
+button {
   margin: -6px 17px 0px 1px;
-  border-radius: 2px;
+  border-radius: 6px;
   color: white;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

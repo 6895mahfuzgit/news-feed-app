@@ -1,13 +1,17 @@
-import { SafeURLPipe } from './../../_pipes/safe.pipe.';
-import { UsService } from './../../_services/us.service';
+import { ItemService } from './../../_services/item.service';
 import {
   ChangeDetectionStrategy,
   Component,
   OnDestroy,
   OnInit,
 } from '@angular/core';
+
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+
+import { SafeURLPipe } from './../../_pipes/safe.pipe.';
+import { UsService } from './../../_services/us.service';
 
 import { ItemTypeService } from './../../_services/item-type.service';
 import { WorldService } from './../../_services/world.service';
@@ -16,12 +20,12 @@ import { ArtsService } from './../../_services/arts.service';
 import { HomeService } from './../../_services/home.service';
 import { ItemEnum } from './../../_enums/item.enum';
 import { Iitem } from 'src/_models/item';
+import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.css'],
-  providers:[SafeURLPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemListComponent implements OnInit, OnDestroy {
@@ -34,8 +38,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   showLoader$ = this.loaderSubject.asObservable();
 
 
-  private urlSubject = new BehaviorSubject<string>('');
-  url$ = this.urlSubject.asObservable();
+
 
 
   constructor(
@@ -45,7 +48,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
     private scienceService: ScienceService,
     private worldService: WorldService,
     private usService: UsService,
-    private safeURLPipe:SafeURLPipe
+    public dialog: MatDialog,
+    private itemService:ItemService,
   ) { }
 
   ngOnInit(): void {
@@ -105,7 +109,10 @@ export class ItemListComponent implements OnInit, OnDestroy {
   }
 
   changeURL(url:string){
-   this.urlSubject.next(url);
+   this.itemService.changeURL(url);
+   setTimeout(()=>{
+    this.dialog.open(PopupDialogComponent);
+   },1000);
   }
 
   ngOnDestroy(): void {
