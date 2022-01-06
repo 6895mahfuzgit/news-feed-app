@@ -6,10 +6,40 @@
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
-.body-color{
-  color: #5e47c7d5;
-  background:#5e47c7d5;
-  background-color: #5e47c7d5;
+.body-color {
+  color: black;
+  background: black;
+  background-color: black;
   z-index: -1;
 }
 
+img {
+  height: 341px;
+  width: 482px;
+  border-radius: 10px;
+  background-color: azure;
+}
+
+.item {
+  border-radius: 10px;
+  background-color: azure;
+  margin-top: 10px;
+  border-style: solid;
+  border-width: thin;
+  border-color: lightgreen;
+  padding: 3px 0px 0px 6px;
+}
+
+.content-txt {
+  font: bold;
+  font-style: oblique;
+}
+
+.content-font {
+  font-family: Franklin Gothic Medium;
+}
+
+h1 {
+  font: bold;
+  font-family: Franklin Gothic Medium;
+}
