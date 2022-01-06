@@ -1,0 +1,18 @@
+.danger{
+  background-color: red;
+  color: white;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

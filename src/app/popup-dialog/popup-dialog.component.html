@@ -1,0 +1,12 @@
+<div style="display: inline;">
+  <h1 mat-dialog-title class="alignleft">Main Page</h1>
+  <button mat-button mat-dialog-close (click)="close()" class="danger alignright">Close</button>
+</div>
+<div class="clearfix"></div>
+
+<div mat-dialog-content>
+  <iframe width="12000" height="12000" [src]="(url$| async | safe)"></iframe>
+</div>
+<div class="clearfix"></div>
+<button mat-button mat-dialog-close (click)="close()" class="danger alignright">Close</button>
+
