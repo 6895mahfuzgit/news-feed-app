@@ -1,5 +1,5 @@
 <div [ngClass]="{ 'body-color': (showLoader$ | async) == true }">
-  <div *ngFor="let item of items$ | async" >
+  <div *ngFor="let item of items$ | async">
     <div class="item">
       <h1>{{ item?.title }}</h1>
       <p class="content-txt content-font">{{ item?.abstract }}</p>
